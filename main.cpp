@@ -45,6 +45,11 @@ std::string read_file(std::string filename){
 
 int main() {
 
+    if(read_file("launcher.conf") == "error"){
+        std::cout<<"launcher.conf file not found"<<std::endl;
+        return 1;
+    }
+
     if(!(exec("python -V").rfind("python 3.",0) != 0)){
         if(!(exec("python3 -V").rfind("python 3.",0) != 0)){
             system("curl \"https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe\" -o python_installer.exe & python_installer.exe /quiet InstallAllUsers=0 Include_launcher=0 Include_test=0 SimpleInstall=1");
